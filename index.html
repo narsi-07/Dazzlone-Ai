@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A powerful Chatbot Assistant: Get answers, solutions, and engage in meaningful conversations."
+    />
+    <meta
+      name="keywords"
+      content="chatbot, AI, answers, solutions, conversations, Dazzlone"
+    />
+    <link rel="shortcut icon" href="" type="image/x-icon">
+    <meta name="author" content="TH3_BULL" />
+    <meta name="robots" content="index, follow" />
+    <meta name="og:title" property="og:title" content="Dazzlone AI" />
+    <meta
+      name="og:description"
+      property="og:description"
+      content="A powerful Chatbot Assistant: Get answers, solutions, and engage in meaningful conversations."
+    />
+    <meta
+      name="og:image"
+      property="og:image"
+      content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhH8Fy8MTPge0EQCU1LqX1X9dFM9-2vrs6v0EBVHKlyyOpTmY3BezscBcGbAAcTxamK4fBp3uTLQzk10K4u5eeA5ZIgnoHviNkfRHX64jI2-HHlsl9d4JG_rr8ksQdaDZVc0kXZYPdvqpsIGCN_v-AelJcZIBlmKSxZLS_-MTghsavn2yi5Lx4IZD2tQA/s800/WhatsAppVideo2025-01-10at9.29.03PM-ezgif.com-video-to-gif-converter.gif"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Dazzlone AI</title>
+
+    <style>
+      /* Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      html, body {
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(135deg, #1a1a2e, #16213e);
+      }
+
+      /* Main Container - Mobile Focused */
+      main {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Header Styles */
+      .topper {
+        display: flex;
+        align-items: center;
+        padding: 15px 20px;
+        background: linear-gradient(135deg, rgba(0, 149, 255, 0.8), rgba(0, 105, 255, 0.8));
+        color: white;
+        height: 60px;
+        box-shadow: 0 2px 15px rgba(0, 149, 255, 0.3);
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        border-top: 2px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .topper::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          rgba(255, 255, 255, 0.4),
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transform: skewX(-25deg);
+        animation: shine 3s infinite;
+        z-index: 1;
+      }
+
+      @keyframes shine {
+        0% {
+          left: -100%;
+          opacity: 0;
+        }
+        20% {
+          opacity: 1;
+        }
+        80% {
+          opacity: 1;
+        }
+        100% {
+          left: 200%;
+          opacity: 0;
+        }
+      }
+
+      .topper::after {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(
+          45deg,
+          rgba(0, 149, 255, 0.5),
+          rgba(0, 195, 255, 0.5),
+          rgba(0, 149, 255, 0.5)
+        );
+        z-index: -1;
+        filter: blur(5px);
+        border-radius: 4px;
+      }
+
+      .icon {
+        width: 32px;
+        height: 32px;
+        margin-right: 12px;
+        background-image: url('https://i.ibb.co/wfhP1tW/Q1v-JOp-removebg-preview.png');
+        background-size: cover;
+        background-position: center;
+        filter: drop-shadow(0 0 5px rgba(0, 149, 255, 0.5));
+        position: relative;
+        z-index: 2;
+      }
+
+      .name {
+        font-size: 24px;
+        font-weight: 600;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        letter-spacing: 0.5px;
+        position: relative;
+        z-index: 2;
+        background: linear-gradient(to right, #ffffff, #e6f3ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* Avatar Container */
+      .avatar-container {
+        display: flex;
+        justify-content: center;
+        padding: 20px 0;
+        background: linear-gradient(180deg, rgba(0, 149, 255, 0.1), rgba(0, 105, 255, 0.05));
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .avatar-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2FKWGCyLI9Ao9AJppnVDSihZtrAvrzMqkaA&s');
+        opacity: 0.05;
+        z-index: 0;
+      }
+
+      .avatar-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 3px solid rgba(0, 149, 255, 0.5);
+        object-fit: cover;
+        box-shadow: 0 0 20px rgba(0, 149, 255, 0.3);
+        transition: all 0.3s ease;
+        z-index: 1;
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      /* Enhanced Wave Animation */
+      .avatar-container::after {
+        content: '';
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: radial-gradient(
+          circle at center,
+          rgba(0, 149, 255, 0.2) 0%,
+          rgba(0, 149, 255, 0.1) 30%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        filter: blur(20px);
+        animation: waveFlex 4s infinite ease-in-out;
+        z-index: 0;
+      }
+
+      @keyframes waveFlex {
+        0% {
+          transform: translate(-50%, -50%) scale(1) rotate(0deg);
+          opacity: 0.5;
+        }
+        25% {
+          transform: translate(-50%, -50%) scale(1.1) rotate(90deg);
+          opacity: 0.7;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1) rotate(180deg);
+          opacity: 0.5;
+        }
+        75% {
+          transform: translate(-50%, -50%) scale(1.1) rotate(270deg);
+          opacity: 0.7;
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1) rotate(360deg);
+          opacity: 0.5;
+        }
+      }
+
+      .avatar-container.speaking::after {
+        animation: waveFlex 2s infinite ease-in-out;
+        background: radial-gradient(
+          circle at center,
+          rgba(0, 149, 255, 0.3) 0%,
+          rgba(0, 149, 255, 0.2) 30%,
+          transparent 70%
+        );
+        filter: blur(25px);
+      }
+
+      /* Additional Glow Effect */
+      .avatar-container::before {
+        content: '';
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: radial-gradient(
+          circle at center,
+          rgba(0, 149, 255, 0.15) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        filter: blur(15px);
+        animation: glowPulse 3s infinite ease-in-out;
+        z-index: 0;
+      }
+
+      @keyframes glowPulse {
+        0%, 100% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 0.5;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.2);
+          opacity: 0.8;
+        }
+      }
+
+      /* Messages Container */
+      .msgs_cont {
+        flex: 1;
+        overflow-y: auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(5px);
+        scrollbar-width: thin;
+      }
+
+      .msgs_cont::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      .msgs_cont::-webkit-scrollbar-thumb {
+        background: rgba(0, 149, 255, 0.5);
+        border-radius: 10px;
+      }
+
+      #list_cont {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      /* Chat Bubbles */
+      .schat, .rchat {
+        max-width: 85%;
+        padding: 14px 16px;
+        border-radius: 20px;
+        word-wrap: break-word;
+        line-height: 1.5;
+        position: relative;
+        animation: fadeIn 0.3s ease-in-out;
+        font-size: 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .schat {
+        align-self: flex-end;
+        background: linear-gradient(135deg, #0095ff, #0069ff);
+        color: white;
+        border-bottom-right-radius: 4px;
+        margin-left: auto;
+      }
+
+      .rchat {
+        align-self: flex-start;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(5px);
+        color: #ffffff;
+        border-bottom-left-radius: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* Input Area */
+      .bottom {
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      #input {
+        display: flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 30px;
+        padding: 8px 15px;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      #input:focus-within {
+        box-shadow: 0 0 0 2px rgba(0, 149, 255, 0.3);
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      #txt {
+        flex: 1;
+        border: none;
+        background: transparent;
+        padding: 8px 0;
+        outline: none;
+        font-size: 15px;
+        color: #ffffff;
+      }
+
+      #txt::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      button.uil-message {
+        background: transparent;
+        border: none;
+        color: #0095ff;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        margin-left: 10px;
+      }
+
+      button.uil-message:hover {
+        background: rgba(0, 149, 255, 0.2);
+        transform: scale(1.1);
+      }
+
+      /* Typing Animation */
+      .typing-animation {
+        display: flex;
+        align-items: center;
+        column-gap: 5px;
+        padding: 8px 12px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        width: fit-content;
+      }
+
+      .dot {
+        height: 8px;
+        width: 8px;
+        border-radius: 50%;
+        background: rgba(0, 149, 255, 0.5);
+        animation: typing 1.5s infinite ease-in-out;
+      }
+
+      .dot:nth-child(1) { animation-delay: 0s; }
+      .dot:nth-child(2) { animation-delay: 0.3s; }
+      .dot:nth-child(3) { animation-delay: 0.6s; }
+
+      @keyframes typing {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+      }
+
+      /* Message Time */
+      .msg-time {
+        font-size: 11px;
+        margin-top: 6px;
+        opacity: 0.7;
+        font-weight: 500;
+      }
+
+      .schat .msg-time {
+        text-align: right;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .rchat .msg-time {
+        text-align: left;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* Mic Button */
+      .mic-button {
+        position: absolute;
+        bottom: 15px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #0095ff, #0069ff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 149, 255, 0.3);
+        transition: all 0.3s ease;
+        z-index: 2;
+      }
+
+      .mic-button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(0, 149, 255, 0.4);
+      }
+
+      .mic-button.active {
+        background: linear-gradient(135deg, #ff4b4b, #ff0000);
+        animation: pulse 1.5s infinite;
+        box-shadow: 0 4px 15px rgba(255, 75, 75, 0.4);
+      }
+
+      /* Listening Indicator */
+      .listening-indicator {
+        position: absolute;
+        bottom: 3px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 149, 255, 0.9);
+        color: white;
+        padding: 6px 15px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        display: none;
+        box-shadow: 0 2px 10px rgba(0, 149, 255, 0.3);
+        z-index: 10;
+        backdrop-filter: blur(5px);
+      }
+
+      .listening-indicator.active {
+        display: flex;
+        align-items: center;
+        animation: pulseFade 1.5s infinite;
+      }
+
+      .listening-indicator i {
+        margin-right: 8px;
+        font-size: 10px;
+        animation: blink 1s infinite;
+      }
+
+      @keyframes pulseFade {
+        0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
+        50% { opacity: 0.8; transform: translateX(-50%) scale(1.05); }
+      }
+
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+
+      @keyframes pulse {
+        0% { transform: scale(1); box-shadow: 0 4px 15px rgba(255, 75, 75, 0.4); }
+        50% { transform: scale(1.05); box-shadow: 0 6px 20px rgba(255, 75, 75, 0.6); }
+        100% { transform: scale(1); box-shadow: 0 4px 15px rgba(255, 75, 75, 0.4); }
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Status Indicators */
+      .status {
+        font-size: 12px;
+        color: #999;
+        margin-top: 4px;
+        text-align: right;
+      }
+
+      /* Volume indicator - Improved */
+      .volume-indicator.active {
+        opacity: 1;
+        animation: softPulse 2s infinite;
+      }
+
+      /* Professional shadow effect for avatar when speaking */
+      .avatar-container.speaking {
+        overflow: visible;
+      }
+
+      .avatar-container.speaking .avatar-img {
+        box-shadow: 0 0 0 5px rgba(17, 175, 186, 0.2), 
+                    0 0 15px rgba(0, 242, 255, 0.4)
+                    0 0 30px rgba(17, 169, 186, 0.1);
+        animation: speakingPulse 2s infinite;
+      }
+
+      @keyframes speakingPulse {
+        0% { transform: scale(1); box-shadow: 0 0 0 5px rgba(17, 177, 186, 0.2), 0 0 15px rgba(17, 186, 145, 0.4), 0 0 30px rgba(17, 186, 145, 0.1); }
+        50% { transform: scale(1.05); box-shadow: 0 0 0 8px rgba(17, 183, 186, 0.2), 0 0 20px rgba(17, 186, 145, 0.5), 0 0 40px rgba(17, 186, 145, 0.2); }
+        100% { transform: scale(1); box-shadow: 0 0 0 5px rgba(17, 163, 186, 0.2), 0 0 15px rgba(17, 186, 145, 0.4), 0 0 30px rgba(17, 186, 145, 0.1); }
+      }
+
+      @keyframes softPulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+      }
+      
+      /* Auto-Listening notice */
+      .auto-listening-notice {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 229, 255, 0.9);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-size: 14px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        animation: noticeAppear 0.5s ease, noticeDisappear 0.5s ease 4.5s forwards;
+      }
+
+      .auto-listening-notice i {
+        margin-right: 8px;
+      }
+
+      @keyframes noticeAppear {
+        from { opacity: 0; transform: translate(-50%, -20px); }
+        to { opacity: 1; transform: translate(-50%, 0); }
+      }
+
+      @keyframes noticeDisappear {
+        from { opacity: 1; transform: translate(-50%, 0); }
+        to { opacity: 0; transform: translate(-50%, -20px); }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <div class="topper">
+        <div class="icon"></div>
+        <div class="name">Dazzlone AI</div>
+      </div>
+      
+      <div class="avatar-container">
+        <img id="avatar" class="avatar-img" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhH8Fy8MTPge0EQCU1LqX1X9dFM9-2vrs6v0EBVHKlyyOpTmY3BezscBcGbAAcTxamK4fBp3uTLQzk10K4u5eeA5ZIgnoHviNkfRHX64jI2-HHlsl9d4JG_rr8ksQdaDZVc0kXZYPdvqpsIGCN_v-AelJcZIBlmKSxZLS_-MTghsavn2yi5Lx4IZD2tQA/s800/WhatsAppVideo2025-01-10at9.29.03PM-ezgif.com-video-to-gif-converter.gif" alt="Dazzlone AI Avatar">
+        <button id="mic-button" class="mic-button">
+          <i class="fa-solid fa-microphone"></i>
+        </button>
+        <div class="listening-indicator"><i class="fas fa-circle"></i> Listening...</div>
+        <div class="volume-indicator">
+          <!-- <i class="fas fa-volume-up"></i> -->
+        </div>
+      </div>
+      
+      <div class="msgs_cont">
+        <ul id="list_cont">
+          <li class="rchat">Hey there! 👋 I'm Dazzlone, your AI assistant. How can I help you today?</li>
+        </ul>
+      </div>
+      <div class="bottom">
+        <div id="input">
+          <input type="text" id="txt" placeholder="Send a message" />
+          <button class="uil-message">➤</button>
+        </div>
+      </div>
+    </main>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+  let bottom = document.querySelector(".bottom");
+  let input = document.querySelector("#txt");
+  let sendbtn = document.querySelector(".uil-message");
+  let ul = document.querySelector("#list_cont");
+  let avatar = document.getElementById("avatar");
+  let micButton = document.getElementById("mic-button");
+  let listeningIndicator = document.querySelector(".listening-indicator");
+  let volumeIndicator = document.querySelector(".volume-indicator");
+  let avatarContainer = document.querySelector(".avatar-container");
+  
+  // Auto-listening mode
+  let autoListeningMode = false; // Set to false by default for WebView compatibility
+  let listeningTimeout = null;
+  
+  // Default avatar and talking avatar URLs
+  const defaultAvatarUrl = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhH8Fy8MTPge0EQCU1LqX1X9dFM9-2vrs6v0EBVHKlyyOpTmY3BezscBcGbAAcTxamK4fBp3uTLQzk10K4u5eeA5ZIgnoHviNkfRHX64jI2-HHlsl9d4JG_rr8ksQdaDZVc0kXZYPdvqpsIGCN_v-AelJcZIBlmKSxZLS_-MTghsavn2yi5Lx4IZD2tQA/s800/WhatsAppVideo2025-01-10at9.29.03PM-ezgif.com-video-to-gif-converter.gif";
+  const talkingAvatarUrl = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlLmZw1azadUdBSMQjrIZPx5uONLyewoDxZh5EYn6aL0qmnIzzIJpuazFzbjDysUYwxURX8mp_7cGFh4g9q_3IAT16v0eYlW9YhTpXULByDkLXAYLB-hfMXghliccmRmFG02o4kTt3eZEpo8CHUrPr0p1IIYCrhe7QEdOKaqEzWk7WtQMgaAHt0MYlF0A/s2566/aivideo.gif";
+  
+  // Remove speech synthesis variables and initialization
+  let audioContext = null;
+  try {
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    audioContext = new AudioContext();
+  } catch (e) {
+    console.log("Audio Context not supported:", e);
+  }
+  
+  // Speech recognition setup with better error handling
+  let recognition = null;
+  let recognitionSupported = false;
+  
+  try {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognitionSupported = SpeechRecognition !== undefined && SpeechRecognition !== null;
+    
+    if (recognitionSupported) {
+      recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.lang = 'en-US';
+      
+      recognition.onstart = function() {
+        micButton.classList.add('active');
+        listeningIndicator.classList.add('active');
+        avatarContainer.classList.add('listening');
+        
+        // When listening starts, show temporary text in input field
+        input.value = "Listening...";
+        input.disabled = true;
+        input.style.fontStyle = "italic";
+        input.style.color = "#11ba91";
+      };
+      
+      recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        input.value = transcript;
+        input.style.fontStyle = "normal";
+        input.style.color = "#333";
+        input.disabled = false;
+        
+        // Give a slight delay before processing the voice command
+        setTimeout(() => {
+          ChatGPT();
+        }, 500);
+      };
+      
+      recognition.onend = function() {
+        micButton.classList.remove('active');
+        listeningIndicator.classList.remove('active');
+        avatarContainer.classList.remove('listening');
+        
+        // Reset input field if no result
+        if (input.value === "Listening...") {
+          input.value = "";
+          input.disabled = false;
+          input.style.fontStyle = "normal";
+          input.style.color = "#333";
+        }
+        
+        // Auto start listening again after a delay if in auto mode
+        if (autoListeningMode && (!recognitionSupported || !recognition.speaking)) {
+          listeningTimeout = setTimeout(() => {
+            startListening();
+          }, 2000);
+        }
+      };
+      
+      recognition.onerror = function(event) {
+        console.error('Speech recognition error', event.error);
+        micButton.classList.remove('active');
+        listeningIndicator.classList.remove('active');
+        avatarContainer.classList.remove('listening');
+        input.value = "";
+        input.disabled = false;
+        input.style.fontStyle = "normal";
+        input.style.color = "#333";
+        
+        // Restart listening after error if in auto mode
+        if (autoListeningMode) {
+          listeningTimeout = setTimeout(() => {
+            startListening();
+          }, 3000);
+        }
+      };
+    }
+  } catch (e) {
+    console.log("Speech recognition not supported:", e);
+    recognitionSupported = false;
+  }
+  
+  // Function to start listening with error handling
+  function startListening() {
+    if (recognitionSupported && recognition) {
+      try {
+        // Check if recognition is already active
+        if (micButton.classList.contains('active')) {
+          return;
+        }
+        
+        // Check if speech synthesis is happening
+        if (recognition.speaking) {
+          return;
+        }
+        
+        recognition.start();
+      } catch (error) {
+        console.log("Recognition error:", error);
+        // Reset states
+        micButton.classList.remove('active');
+        listeningIndicator.classList.remove('active');
+        avatarContainer.classList.remove('listening');
+      }
+    } else {
+      console.log("Recognition not supported");
+    }
+  }
+  
+  // Update mic button based on feature availability
+  if (!recognitionSupported) {
+    micButton.style.display = "none";
+  } else {
+    // Mic button click handler
+    micButton.addEventListener('click', () => {
+      if (recognitionSupported && recognition) {
+        if (micButton.classList.contains('active')) {
+          try {
+            recognition.stop();
+          } catch (e) {
+            console.log("Error stopping recognition:", e);
+          }
+          autoListeningMode = false;
+        } else {
+          startListening();
+          autoListeningMode = true;
+        }
+      } else {
+        alert('Speech recognition is not supported in your browser');
+      }
+    });
+  }
+  
+  // Improved avatar animation for WebView environments
+  function handleAvatarTalking(text) {
+    // Animate avatar for approximately the time it would take to speak the text
+    const wordsCount = text.split(' ').length;
+    const speakingTime = Math.max(3000, wordsCount * 300); // Roughly 300ms per word
+    
+    // Show talking avatar
+    avatar.src = talkingAvatarUrl;
+    avatarContainer.classList.add('speaking');
+    volumeIndicator.classList.add('active');
+    
+    // Return to default after estimated speaking time
+    setTimeout(() => {
+      avatar.src = defaultAvatarUrl;
+      volumeIndicator.classList.remove('active');
+      avatarContainer.classList.remove('speaking');
+      
+      // Restart auto-listening after animation if in auto mode
+      if (autoListeningMode && recognitionSupported) {
+        listeningTimeout = setTimeout(() => {
+          startListening();
+        }, 1500);
+      }
+    }, speakingTime);
+  }
+
+  // Text-to-speech function with Eleven Labs API only
+  async function speakText(text) {
+    // Animate the avatar in all cases
+    handleAvatarTalking(text);
+    
+    try {
+      // Eleven Labs API configuration
+      const apiKey = "sk_2026f426180b2ebafe410fc35a63b0d515459d150ace5b99";
+      const voiceId = "Cx2PEJFdr8frSuUVB6yZ"; // Bella voice - a sweet and engaging female voice
+      const apiUrl = `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}/stream`;
+
+      console.log("Starting voice generation...");
+
+      // Prepare the request
+      const requestOptions = {
+        method: "POST",
+        headers: {
+          "Accept": "audio/mpeg",
+          "Content-Type": "application/json",
+          "xi-api-key": apiKey
+        },
+        body: JSON.stringify({
+          text: text,
+          model_id: "eleven_multilingual_v2",
+          voice_settings: {
+            stability: 0.5,
+            similarity_boost: 0.75,
+            style: 0.0,
+            use_speaker_boost: true
+          }
+        })
+      };
+
+      // Show speaking effects
+      avatarContainer.classList.add('speaking');
+      avatar.src = talkingAvatarUrl;
+      volumeIndicator.classList.add('active');
+
+      console.log("Making API request to Eleven Labs...");
+      
+      // Make the API request
+      const response = await fetch(apiUrl, requestOptions);
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Eleven Labs API error:", response.status, response.statusText, errorText);
+        throw new Error(`Eleven Labs API error: ${response.status} - ${errorText}`);
+      }
+
+      console.log("API request successful, getting audio data...");
+
+      // Get the audio data
+      const audioBlob = await response.blob();
+      const audioUrl = URL.createObjectURL(audioBlob);
+      
+      console.log("Audio blob created, creating audio element...");
+      
+      // Create and play audio
+      const audio = new Audio();
+      
+      // Add event listeners for debugging
+      audio.addEventListener('play', () => console.log('Audio started playing'));
+      audio.addEventListener('error', (e) => console.error('Audio error:', e));
+      audio.addEventListener('ended', () => console.log('Audio playback ended'));
+      
+      audio.onended = () => {
+        console.log("Audio playback completed, cleaning up...");
+        // Clean up
+        URL.revokeObjectURL(audioUrl);
+        avatar.src = defaultAvatarUrl;
+        volumeIndicator.classList.remove('active');
+        avatarContainer.classList.remove('speaking');
+
+        // Restart auto-listening after speaking if in auto mode
+        if (autoListeningMode && recognitionSupported) {
+          listeningTimeout = setTimeout(() => {
+            startListening();
+          }, 1500);
+        }
+      };
+
+      // Set the audio source and play
+      audio.src = audioUrl;
+      await audio.play();
+
+    } catch (error) {
+      console.error("Eleven Labs API error:", error);
+      // Just use avatar animation if voice fails
+      handleAvatarTalking(text);
+    }
+  }
+
+  bottom.addEventListener("click", () => {
+    input.focus();
+  });
+
+  input.addEventListener("input", () => {
+    if (input.value.length > 0 && input.value !== "Listening...") {
+      sendbtn.style.color = "#11ba91";
+    } else {
+      sendbtn.style.color = "#dbdbdb";
+    }
+  });
+
+  input.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      ChatGPT();
+    }
+  });
+
+
+  function getCurrentTime() {
+    const now = new Date();
+    return `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+  }
+
+  async function ChatGPT() {
+    if (
+      input.value !== "" &&
+      input.value !== null &&
+      input.value.length > 0 &&
+      input.value.trim() !== "" &&
+      input.value !== "Listening..."
+    ) {
+      sendbtn.style.color = "#dbdbdb";
+
+      // Auto-listening mode should pause during conversation
+      if (recognitionSupported && recognition && autoListeningMode) {
+        clearTimeout(listeningTimeout);
+        try {
+          recognition.stop();
+        } catch (e) {
+          console.log("Error stopping recognition:", e);
+        }
+      }
+
+      // Store user input and clear the input field
+      const userInput = input.value;
+      input.value = "";
+
+      // Add user message with time - use original userInput without any replacement
+      let li = document.createElement("li");
+      li.className = "schat";
+      li.textContent = userInput;  // Display original message without replacement
+      
+      // Add time element
+      let timeSpan = document.createElement("div");
+      timeSpan.className = "msg-time";
+      timeSpan.textContent = getCurrentTime();
+      li.appendChild(timeSpan);
+      
+      ul.appendChild(li);
+      $(".msgs_cont").scrollTop($(".msgs_cont")[0].scrollHeight);
+
+      // Add typing animation
+      let typingAnimationDiv = document.createElement("div");
+      typingAnimationDiv.className = "typing-animation";
+      for (var i = 0; i < 3; i++) {
+        var dotSpan = document.createElement("span");
+        dotSpan.className = "dot";
+        typingAnimationDiv.appendChild(dotSpan);
+      }
+
+      let li2 = document.createElement("li");
+      li2.className = "rchat";
+      li2.appendChild(typingAnimationDiv);
+      
+      // Keep default avatar during typing animation
+      avatar.src = defaultAvatarUrl;
+
+      // Add the typing animation immediately
+      ul.appendChild(li2);
+      $(".msgs_cont").scrollTop($(".msgs_cont")[0].scrollHeight);
+
+      sendbtn.disabled = true;
+      input.disabled = true;
+
+      // API Integration with better error handling
+      const apiKey = "AIzaSyDhDhiKFkaYAp-o0lGL4e4uJSYIJSh6paY";
+      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+
+      const requestOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                {
+                  text: userInput,
+                },
+              ],
+            },
+          ],
+        }),
+      };
+
+      try {
+        const response = await fetch(apiUrl, requestOptions);
+        
+        if (!response.ok) {
+          throw new Error(`API error: ${response.status}`);
+        }
+        
+        const data = await response.json();
+
+        // Check if the response has the expected format
+        if (!data.candidates || !data.candidates[0] || !data.candidates[0].content || !data.candidates[0].content.parts || !data.candidates[0].content.parts[0]) {
+          throw new Error("Unexpected API response format");
+        }
+
+        // Extract the response text
+        let apiResponse = data.candidates[0].content.parts[0].text.trim();
+
+        // Check if user is asking about Google's creation
+        const isAskingAboutGoogleCreation = userInput.toLowerCase().includes("created by google") || 
+                                          userInput.toLowerCase().includes("made by google") ||
+                                          userInput.toLowerCase().includes("developed by google");
+
+        if (isAskingAboutGoogleCreation) {
+            apiResponse = "No, I am created by Dazzlone. I am Dazzlone's AI assistant.";
+        } else {
+            // Normal replacement for other responses
+            apiResponse = apiResponse.replace(/\bGoogle\b/g, "Dazzlone");
+        }
+
+        // Clear typing animation and show response
+        li2.innerHTML = "";
+        
+        // Start speech synthesis or avatar animation
+        speakText(apiResponse);
+        
+        // Display the response with typing effect
+        let responseText = "";
+        let i = 0;
+        const intervalId = setInterval(() => {
+          if (i < apiResponse.length) {
+            responseText += apiResponse[i];
+            li2.textContent = responseText;
+            $(".msgs_cont").scrollTop($(".msgs_cont")[0].scrollHeight);
+            i++;
+          } else {
+            clearInterval(intervalId);
+            
+            // Add time element to response
+            let responseTimeSpan = document.createElement("div");
+            responseTimeSpan.className = "msg-time";
+            responseTimeSpan.textContent = getCurrentTime();
+            li2.appendChild(responseTimeSpan);
+            
+            sendbtn.disabled = false;
+            input.disabled = false;
+            input.focus();
+          }
+        }, 15);
+        
+      } catch (error) {
+        li2.textContent = "Sorry, something went wrong. Please try again.";
+        
+        // Add time element
+        let errorTimeSpan = document.createElement("div");
+        errorTimeSpan.className = "msg-time";
+        errorTimeSpan.textContent = getCurrentTime();
+        li2.appendChild(errorTimeSpan);
+        
+        $(".msgs_cont").scrollTop($(".msgs_cont")[0].scrollHeight);
+        sendbtn.disabled = false;
+        input.disabled = false;
+        
+        // Change back to default avatar
+        avatar.src = defaultAvatarUrl;
+        volumeIndicator.classList.remove('active');
+      }
+    }
+  }
+
+  sendbtn.addEventListener("click", ChatGPT);
+  
+  // Play notification sound on page load
+  function playWelcomeSound() {
+    const audio = new Audio("https://www.soundjay.com/buttons/sounds/button-09.mp3");
+    audio.volume = 0.5;
+    
+    // Wait for user interaction before playing sound
+    document.addEventListener('click', function playSound() {
+      audio.play();
+      
+      // Speak welcome message after a short delay
+      setTimeout(() => {
+        // Change to talking avatar only when speaking
+        avatar.src = talkingAvatarUrl;
+        volumeIndicator.classList.add('active');
+        speakText("Hey there! I'm Dazzlone, your AI assistant. How can I help you today?");
+      }, 500);
+      
+      document.removeEventListener('click', playSound);
+    }, { once: true });
+  }
+  
+  playWelcomeSound();
+});
+    </script>
+  </body>
+</html>
